@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <tr>
+            <td colspan="3">mp4 영상</td>
+        </tr>
+        <tr>
+            <!-- 각 동영상을 별도의 <td> 안에 배치 -->
+            <td>
+                <video width="100%" controls>
+                    <source src="Img/video1.mp4" type="video/mp4" />
+                    Your browser does not support the video tag.
+                </video>
+            </td>
+            <td>
+                <video width="100%" controls>
+                    <source src="Img/video1.mp4" type="video/mp4" />
+                    Your browser does not support the video tag.
+                </video>
+            </td>
+            <td>
+                <video width="100%" controls>
+                    <source src="Img/video1.mp4" type="video/mp4" />
+                    Your browser does not support the video tag.
+                </video>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3">Youtube 영상</td>
+        </tr>
+        <tr>
+            <!-- 각 iframe을 별도의 <td> 안에 배치 -->
+            <td>
+                <iframe width="100%" height="180" src="https://www.youtube.com/embed/9mXKTEkb6-M" frameborder="0" allowfullscreen></iframe>
+            </td>
+            <td>
+                <iframe width="100%" height="180" src="https://www.youtube.com/embed/9mXKTEkb6-M" frameborder="0" allowfullscreen></iframe>
+            </td>
+            <td>
+                <iframe width="100%" height="180" src="https://www.youtube.com/embed/9mXKTEkb6-M" frameborder="0" allowfullscreen></iframe>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>
