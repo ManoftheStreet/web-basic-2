@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>창 모양 예제</title>
+    <style>
+      body {
+        font-family: "Arial", sans-serif; /* 폰트는 여러분의 원하는 것으로 변경 가능 */
+        background: url(Img/IU.jpg) no-repeat center center fixed;
+        background-size: cover;
+        height: 100vh;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-top: 0;
+      }
+
+      .topbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 2%;
+        background-color: rgba(0, 0, 0, 0.7);
+        width: 100%; /* 너비를 전체 화면 크기로 설정 */
+        position: fixed; /* 위치를 고정 */
+        top: 0; /* 화면 맨 위로 이동 */
+        left: 0; /* 화면 왼쪽에 정렬 */
+        z-index: 100; /* 다른 요소 위에 보이도록 설정 */
+      }
+
+      .topbar .logo {
+        display: flex;
+        align-items: center;
+      }
+
+      .topbar .logo img {
+        width: 20px;
+        margin-right: 10px;
+      }
+
+      .topbar .menu {
+        display: flex;
+        gap: 20px;
+        margin-right: 40px;
+      }
+
+      .topbar .menu a {
+        color: #fff;
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+
+      .topbar .menu a:hover {
+        color: #ccc;
+      }
+
+      .window {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .window h2 {
+        color: #fff;
+        margin-bottom: 20px;
+      }
+
+      .window button {
+        background-color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      .window button:hover {
+        background-color: #eee;
+      }
+      .name {
+        font-weight: bold;
+        color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="topbar">
+      <div class="logo">
+        <img src="Img/gogle.png" alt="깃허브" />
+      </div>
+      <div class="menu">
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Projects</a>
+        <a href="#">Contact</a>
+      </div>
+    </div>
+    <div class="window">
+      <h2>
+        안녕하세요. 제 이름은 <span class="name">홍길동</span>입니다. 제
+        포트폴리오를 감상하세요.
+      </h2>
+      <a
+        href="https://manofthestreet.github.io/MyWeb/"
+        style="
+          display: inline-block;
+          background-color: #fff;
+          border: none;
+          padding: 10px 20px;
+          border-radius: 5px;
+          cursor: pointer;
+          transition: background-color 0.3s;
+          text-decoration: none;
+          color: black;
+        "
+        target="_blank"
+        >View my work</a
+      >
+    </div>
+  </body>
+</html>
