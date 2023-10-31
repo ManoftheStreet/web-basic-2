@@ -27,9 +27,11 @@ function submitNumber() {
     }
   }
 }
-function changeColor(color) {
-  var outputDiv = document.getElementById("outputName");
-  switch (color) {
+function changeColor(buttonElement) {
+  var outputDiv = document.getElementById("outputColor");
+  var colorText = buttonElement.innerText
+  alert(`${colorText}색으로 변경합니다`);
+  switch (colorText) {
     case "빨강":
       outputDiv.style.color = "red";
       break;
@@ -49,9 +51,9 @@ function submitColor() {
   if (name === "") {
     alert(`텍스트 값을 입력해 주세요`);
   } else {
-    document.getElementById("outputName").innerHTML = `<p>${name}</p>
-            <button onclick="changeColor('빨강')">빨강</button>
-            <button onclick="changeColor('파랑')">파랑</button>
-            <button onclick="changeColor('노랑')">노랑</button>`;
+    document.getElementById("outputColor").innerHTML = `<p>${name}</p>
+            <button onclick="changeColor(this)">빨강</button>
+            <button onclick="changeColor(this)">파랑</button>
+            <button onclick="changeColor(this)">노랑</button>`;
   }
 }
