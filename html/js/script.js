@@ -50,8 +50,8 @@ function submitColor() {
 function resetColors() {
   var buttons = document.querySelectorAll('.box');
   buttons.forEach(function (button) {
-    button.style.backgroundColor = 'black';
-    button.style.color = 'white';
+    button.style.backgroundColor = '';
+    button.style.color = '';
   });
 }
 function switchColor(buttonElement, bgColor, fontColor) {
