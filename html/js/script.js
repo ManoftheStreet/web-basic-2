@@ -29,7 +29,7 @@ function submitNumber() {
 }
 function changeColor(buttonElement, color) {
   var outputDiv = document.getElementById("outputColor");
-  var colorText = buttonElement.innerText
+  var colorText = buttonElement.innerText;
   alert(`${colorText}색으로 변경합니다`);
 
   outputDiv.style.color = color;
@@ -46,4 +46,16 @@ function submitColor() {
             <button onclick="changeColor(this,'blue')">파랑</button>
             <button onclick="changeColor(this,'yellow')">노랑</button>`;
   }
+}
+function resetColors() {
+  var buttons = document.querySelectorAll('.box');
+  buttons.forEach(function (button) {
+    button.style.backgroundColor = 'black';
+    button.style.color = 'white';
+  });
+}
+function switchColor(buttonElement, bgColor, fontColor) {
+  resetColors();
+  buttonElement.style.backgroundColor = bgColor;
+  buttonElement.style.color = fontColor;
 }
