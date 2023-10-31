@@ -45,7 +45,7 @@ function changeColor(color) {
 }
 
 function submitColor() {
-  var name = document.getElementById("nameInput").value;
+  var name = document.getElementById("colorInput").value;
   if (name === "") {
     alert(`텍스트 값을 입력해 주세요`);
   } else {
