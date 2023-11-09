@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <!-- #demo -->
+  <div id="demo"></div>
+  <button id="getData">getData</button>
+
+  <script>
+    document.getElementById('getData').addEventListener('click', function () {
+      loadDoc();
+    });
+
+    function loadDoc() {
+      fetch('ajax_info.txt')
+        .then(response => response.json())
+        .then(function (json) {
+          console.log(json);
+          document.getElementById('demo').innerText = json.message;
+        });
+    }
+  </script>
+</body>
+
+</html>
