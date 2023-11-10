@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Upcoming Movies</title>
+    <style>
+      .movie-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        padding: 16px;
+        justify-content: center;
+        background-color: #177d74;
+        border: 1px solid #ccc;
+        border-radius: 20px;
+      }
+      .movie {
+        width: 150px;
+        margin-bottom: 16px;
+        text-align: center;
+        color: white;
+      }
+      .movie img {
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+      }
+      .modal {
+        display: none; /* 기본적으로 모달을 숨깁니다 */
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.4);
+        border-radius: 20px;
+      }
+
+      .modal-content {
+        background-color: #fefefe;
+        margin: 15% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+        background-color: #177d74;
+        color: white;
+        border-radius: 20px;
+      }
+
+      .close {
+        color: white;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+      }
+
+      .close:hover,
+      .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <p id="movie-details"></p>
+      </div>
+    </div>
+    <div id="movie-container" class="movie-container">
+      <!-- 영화 포스터가 여기에 동적으로 추가됩니다 -->
+    </div>
+
+    <script>
+      const apiUrl = `https://api.themoviedb.org/3/movie/upcoming?api_key=a64533e7ece6c72731da47c9c8bc691f&language=ko-KR&page=1`;
+
+      async function getMovies() {
+        const response = await fetch(apiUrl);
+        const data = await response.json();
+        displayMovies(data.results);
+      }
+
+      function displayMovies(movies) {
+        const container = document.getElementById("movie-container");
+        container.innerHTML = ""; // 이전 내용을 지우고 새로운 영화들로 채웁니다.
+
+        movies.forEach((movie) => {
+          const movieEl = document.createElement("div");
+          movieEl.classList.add("movie");
+          movieEl.innerHTML = `
+            <img src="https://image.tmdb.org/t/p/w500${movie.poster_path}" alt="${movie.title}">
+            <h3>${movie.title}</h3>
+          `;
+
+          movieEl.addEventListener("click", () => {
+            showMovieDetails(movie.id); // 영화 ID를 showMovieDetails 함수로 전달
+          });
+          container.appendChild(movieEl);
+        });
+      }
+
+      async function showMovieDetails(movieId) {
+        const url = `https://api.themoviedb.org/3/movie/${movieId}?api_key=a64533e7ece6c72731da47c9c8bc691f&language=ko-KR`;
+        const response = await fetch(url);
+        const movieDetails = await response.json();
+
+        const modal = document.getElementById("myModal");
+        const detailsElement = document.getElementById("movie-details");
+        detailsElement.innerHTML = `
+        <h1>${movieDetails.title}</h1>
+        <p>${movieDetails.overview}</p>
+        <img src="https://image.tmdb.org/t/p/w500${movieDetails.poster_path}" alt="${movieDetails.title}">
+      `;
+        modal.style.display = "block"; // 모달을 보여줍니다.
+        const closeBtn = document.querySelector(".close");
+        closeBtn.onclick = function () {
+          modal.style.display = "none";
+        };
+        window.onclick = function (event) {
+          if (event.target === modal) {
+            modal.style.display = "none";
+          }
+        };
+      }
+
+      getMovies(); // 페이지가 로드될 때 영화 정보를 가져옵니다.
+    </script>
+  </body>
+</html>
